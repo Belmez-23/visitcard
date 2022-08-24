@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+{# https://i.pinimg.com/originals/28/1b/e9/281be91e2a8e88e6c22e699b947b91f4.png палитра #}
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Кто я{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
-         {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
     {% block javascripts %}
@@ -15,34 +16,30 @@
 </head>
 <body>
 {% block body %}
-    <h2 class="mb-5">
-        Бельмесова Марина
-    </h2>
-    <h3 class="mb-5">
-        Веб-программистка
-    </h3>
-
+    <div class="header">
+        <h2>
+            Бельмесова Марина
+        </h2>
+        <h3>
+            Веб-программистка
+        </h3>
+        <img src="{{ image('@images/photo.png') }}" alt="Logo">
+    </div>
+    <div class="chapters">
     {% for chapter in chapters %}
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card border shadow lift">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h4 class="font-weight-light">
-                                {{ chapter.header }}
-                            </h4>
-                            <p>
-                                {{ chapter.text }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="chapter">
+            <h4>
+                {{ chapter.header }}
+            </h4>
+            <p>
+                {{ chapter.text }}
+            </p>
         </div>
     {% endfor %}
-    <h3 class="mb-5">Свяжитесь со мной</h3>
-    <div class="feedback">
-    {{ form(feedback) }}
+        <div class="feedback">
+            <h3>Свяжитесь со мной</h3>
+            {{ form(feedback) }}
+        </div>
     </div>
 {% endblock %}
 </body>

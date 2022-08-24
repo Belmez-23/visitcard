@@ -1,3 +1,93 @@
 body {
-    background-color: #a3a7f8;
+    background-image: url("https://get.wallhere.com/photo/vaporwave-pink-1383397.jpg");
+    background-size: 80%;
+}
+
+.header {
+    height: 100%;
+    width: 50%;
+    left: 50%;
+    text-align: center;
+    float: left;
+}
+
+h2 {
+    font-size: 30px;
+    letter-spacing: -0.102em;
+    line-height: 0;
+    font-weight: 700;
+    font-style: initial;
+    color: #6A6A98;
+}
+
+h3 {
+    color: #6A6A98;
+}
+
+h4 {
+    color: #6A6A98;
+}
+
+.chapters {
+    float: left;
+    background-color: rgba(222, 159, 159, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.chapter {
+    color: #6A6A98;
+}
+
+.feedback {
+    color: #6A6A98;
+    background-color: rgba(222, 159, 159, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #AAA9D3;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+button:hover {
+    background-color: #6A6A98
+}
+
+button:active {
+    background-color: #6A6A98;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+textarea {
+    resize: none;
+    width: -moz-available;
+    height: 200px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+input {
+    width: -moz-available;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+img {
+    width: inherit;
+    height: inherit;
 }
