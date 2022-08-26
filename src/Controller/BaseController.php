@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\BaseService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -15,10 +16,12 @@ use Twig\Environment;
 class BaseController extends AbstractController
 {
     private $twig;
+    private $service;
 
-    public function __construct(Environment $twig)
+    public function __construct(Environment $twig, BaseService $service)
     {
         $this->twig = $twig;
+        $this->service = $service;
     }
 
     /**
@@ -42,9 +45,9 @@ EOF
     public function index(Request $request): Response
     {
         $feedbackForm = $this->createFormBuilder()
-            ->add('name', TextType::class, ['label' => 'Представьтесь, пожалуйста', 'required' => false])
-            ->add('email', EmailType::class, ['label' => 'Ваша электронная почта для обратной связи'])
-            ->add('message', TextareaType::class, ['label' => ' '])
+            ->add('name', TextType::class, ['required' => false])
+            ->add('email', EmailType::class)
+            ->add('message', TextareaType::class)
             ->add('send', SubmitType::class)
             ->getForm();
 
@@ -57,14 +60,7 @@ EOF
         }
 
         return new Response($this->twig->render('base.html.twig', [
-            'chapters' => [
-                ['header' => 'Кто я',
-                    'text' => 'cccc'],
-                ['header' => 'Что я могу',
-                    'text' => 'ccccc'],
-                ['header' => 'Мой опыт',
-                    'text' => 'cccc'],
-            ],
+            'chapters' => $this->service->getResume(),
             'feedback' => $feedbackForm->createView(),
         ]));
     }

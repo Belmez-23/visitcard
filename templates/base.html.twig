@@ -16,29 +16,42 @@
 </head>
 <body>
 {% block body %}
-    <div class="header">
-        <h2>
-            Бельмесова Марина
-        </h2>
-        <h3>
-            Веб-программистка
-        </h3>
-        <img src="{{ asset('/images/photo.jpg') }}" alt="Logo">
+    <div class="profile">
+        <h2>Бельмесова Марина</h2>
+        <h3>Веб-программистка</h3>
+        <div id="profile-photo">
+            <a href="#" title="Фото с работы в компании JCat.ru">
+                <img src="{{ asset('/img/photo.jpg') }}" alt="My face">
+            </a>
+        </div>
     </div>
     <div class="chapters">
-    {% for chapter in chapters %}
-        <div class="chapter">
-            <h4>
-                {{ chapter.header }}
-            </h4>
-            <p>
-                {{ chapter.text }}
-            </p>
-        </div>
-    {% endfor %}
+        {% for chapter in chapters %}
+            <div class="chapter">
+                <div class="chapter-top">
+                    <button class="btn-top" style="background-color: rgba(255, 242, 242, 0.5)">-</button>
+                    <button class="btn-top">Х</button>
+                </div>
+                <h4>
+                    {{ chapter.header }}
+                </h4>
+                <p>
+                    {{ chapter.text }}
+                </p>
+            </div>
+        {% endfor %}
         <div class="feedback">
+            <div class="chapter-top">
+                <button class="btn-top" style="background-color: rgba(255, 242, 242, 0.5)">-</button>
+                <button class="btn-top">Х</button>
+            </div>
             <h3>Свяжитесь со мной</h3>
-            {{ form(feedback) }}
+            {{ form_start(feedback) }}
+            <div class="feedback-elem"> {{ form_row(feedback.name, {'label': 'Представьтесь, пожалуйста'}) }} </div>
+            <div class="feedback-elem"> {{ form_row(feedback.email, {'label': 'Ваша электронная почта для обратной связи'}) }} </div>
+            <div class="feedback-elem"> {{ form_row(feedback.message, {'label' : ' '}) }} </div>
+            <div class="feedback-btn">   {{ form_row(feedback.send, { 'label': 'Отправить' }) }} </div>
+            {{ form_end(feedback) }}
         </div>
     </div>
 {% endblock %}

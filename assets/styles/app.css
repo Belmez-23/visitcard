@@ -1,16 +1,64 @@
 body {
     background-image: url("https://get.wallhere.com/photo/vaporwave-pink-1383397.jpg");
-    background-size: 80%;
+    background-size: 40%;
+    font-family: Arial;
 }
 
-.header {
+.profile {
+    float: left;
     height: 100%;
-    width: 50%;
     left: 50%;
     text-align: center;
-    float: left;
+    width: 50%;
+    vertical-align: middle;
+    display: inline;
 }
 
+#profile-photo {
+    width: 400px;
+    display: inline-block;
+}
+
+#profile-photo img {
+    width: 100%;
+    height: inherit;
+    display: block;
+}
+
+#profile-photo a {
+    background: #ffffff;
+    display: inline-block;
+    margin: 55px 75px 30px;
+    padding: 15px 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -webkit-transition: all .20s linear;
+    -moz-transition: all .20s linear;
+    transition: all .20s linear;
+    z-index: 0;
+    position: relative;
+}
+
+#profile-photo a:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+    z-index: 10;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+}
+
+#profile-photo a:after {
+    color: #333;
+    font-size: 15px;
+    content: attr(title);
+    position: relative;
+    top: 15px;
+}
 h2 {
     font-size: 30px;
     letter-spacing: -0.102em;
@@ -21,34 +69,76 @@ h2 {
 }
 
 h3 {
+    margin: 10px;
     color: #6A6A98;
 }
 
 h4 {
+    margin: 10px;
     color: #6A6A98;
+}
+
+p {
+    margin: 10px;
 }
 
 .chapters {
     float: left;
-    background-color: rgba(222, 159, 159, 0.5);
-    border-radius: 10px;
     padding: 20px;
 }
 
 .chapter {
     color: #6A6A98;
+    background-color: rgba(255, 242, 242, 0.5);
+    border: 3px solid #666666;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.chapter-top {
+    padding: 5px;
+    background: #666666;
+    text-align: right;
+}
+
+.btn-top {
+    background-color: #d3a9a9;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 10px;
+    padding: 5px;
+    width: 26px;
+    height: 100%;
+}
+
+.btn-top:hover {
+    background-color: #986a6a
 }
 
 .feedback {
     color: #6A6A98;
     background-color: rgba(222, 159, 159, 0.5);
+    border: 3px solid #666666;
     border-radius: 10px;
-    padding: 20px;
+    margin: 5px;
 }
 
-button {
+.feedback-btn {
+    display: flex;
+    justify-content: right;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.feedback-elem {
+    margin: 5px 5px 5px 10px;
+}
+
+#form_send {
     display: inline-block;
-    padding: 15px 25px;
+    padding: 5px 15px;
     font-size: 24px;
     cursor: pointer;
     text-align: center;
@@ -61,11 +151,11 @@ button {
     box-shadow: 0 9px #999;
 }
 
-button:hover {
+#form_send:hover {
     background-color: #6A6A98
 }
 
-button:active {
+#form_send:active {
     background-color: #6A6A98;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
@@ -77,17 +167,12 @@ textarea {
     height: 200px;
     border: none;
     border-radius: 5px;
-    margin: 10px;
+    margin: 10px 10px 10px 0;
 }
 
 input {
     width: -moz-available;
     border: none;
     border-radius: 5px;
-    margin: 10px;
-}
-
-img {
-    width: inherit;
-    height: inherit;
+    margin: 10px 10px 10px 0;
 }
