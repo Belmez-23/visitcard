@@ -15,7 +15,7 @@ body {
 }
 
 #profile-photo {
-    width: 400px;
+    width: 500px;
     display: inline-block;
 }
 
@@ -164,7 +164,7 @@ p {
 textarea {
     resize: none;
     width: -moz-available;
-    height: 200px;
+    height: 75px;
     border: none;
     border-radius: 5px;
     margin: 10px 10px 10px 0;
