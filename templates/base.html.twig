@@ -26,26 +26,36 @@
         </div>
     </div>
     <div class="chapters">
+        {% set i = 0 %}
         {% for chapter in chapters %}
             <div class="chapter">
                 <div class="chapter-top">
+                    <div class="chapter-top-title">
+                        <h4>
+                            {{ chapter.header }}
+                        </h4>
+                    </div>
                     <button class="btn-top" style="background-color: rgba(255, 242, 242, 0.5)">-</button>
                     <button class="btn-top">Х</button>
                 </div>
-                <h4>
-                    {{ chapter.header }}
-                </h4>
                 <p>
                     {{ chapter.text }}
                 </p>
             </div>
+            <div class="sticker" id="mydiv"
+                 style="top: {{ i * 100 + 25 }}px ;left: 45%; background-image: url({{ asset('/img/' ~ chapter.sticker) }});"></div>
+            {% set i = i + 1 %}
         {% endfor %}
         <div class="feedback">
             <div class="chapter-top">
+                <div class="chapter-top-title">
+                    <h4>
+                        Свяжитесь со мной
+                    </h4>
+                </div>
                 <button class="btn-top" style="background-color: rgba(255, 242, 242, 0.5)">-</button>
                 <button class="btn-top">Х</button>
             </div>
-            <h3>Свяжитесь со мной</h3>
             {{ form_start(feedback) }}
             <div class="feedback-elem"> {{ form_row(feedback.name, {'label': 'Представьтесь, пожалуйста'}) }} </div>
             <div class="feedback-elem"> {{ form_row(feedback.email, {'label': 'Ваша электронная почта для обратной связи'}) }} </div>
@@ -55,5 +65,6 @@
         </div>
     </div>
 {% endblock %}
+<script src="{{ asset('/js/stuff.js') }}"></script>
 </body>
 </html>

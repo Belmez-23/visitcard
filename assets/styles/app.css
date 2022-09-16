@@ -75,7 +75,6 @@ h3 {
 
 h4 {
     margin: 10px;
-    color: #6A6A98;
 }
 
 p {
@@ -99,6 +98,15 @@ p {
     padding: 5px;
     background: #666666;
     text-align: right;
+    width: -moz-available;
+    display: inline-flex;
+}
+
+.chapter-top-title {
+    padding: 0;
+    text-align: left;
+    width: inherit;
+    color: rgb(255, 242, 242);
 }
 
 .btn-top {
@@ -109,8 +117,10 @@ p {
     display: inline-block;
     font-size: 10px;
     padding: 5px;
-    width: 26px;
+    width: 5%;
     height: 100%;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
 .btn-top:hover {
@@ -175,4 +185,20 @@ input {
     border: none;
     border-radius: 5px;
     margin: 10px 10px 10px 0;
+}
+
+.sticker {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    z-index: 9;
+    cursor: move;
+
+    background-image: url("/public/img/flow1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.sticker img {
+    width: inherit;
 }
