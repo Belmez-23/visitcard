@@ -1,5 +1,7 @@
 //1. COMPLETE VARIABLE AND FUNCTION DEFINITIONS
-const customName = document.getElementById('customname');
+const customX = document.getElementById('customx');
+const customY = document.getElementById('customy');
+const customZ = document.getElementById('customz');
 const randomize = document.querySelector('.randomize');
 const story = document.querySelector('.story');
 
@@ -36,17 +38,13 @@ randomize.addEventListener('click', result);
 function result() {
 
     let newStory = storyText;
-    let xItem = randomValueFromArray(insertX);
-    let yItem = randomValueFromArray(insertY);
-    let zItem = randomValueFromArray(insertZ);
+    let xItem = customX.value !== '' ? customX.value: randomValueFromArray(insertX);
+    let yItem = customY.value !== '' ? customY.value: randomValueFromArray(insertY);
+    let zItem = customZ.value !== '' ? customZ.value: randomValueFromArray(insertZ);
 
     newStory = newStory.replaceAll(':insertx:', xItem);
     newStory = newStory.replace(':inserty:', yItem);
     newStory = newStory.replace(':insertz:', zItem);
-
-    if (customName.value !== '') {
-        newStory = newStory.replace('Прохожий', customName.value);
-    }
 
     if (document.getElementById("ru").checked) {
         newStory = newStory.replace('94 градуса по Фаренгейту', Math.round((94 - 32) / 1.8) + ' градуса по Цельсию');
