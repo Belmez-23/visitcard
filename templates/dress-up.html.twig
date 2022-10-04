@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>{% block title %}Одевалка{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+    <div class="chapters" style="display: inline-flex">
+        <div class="chapter" style="width: 555px">
+            <div class="chapter-top">
+                <div class="chapter-top-title">
+                    <h4>
+                        Одевалка
+                    </h4>
+                </div>
+                <button class="btn-top" style="background-color: rgba(255, 242, 242, 0.5)">-</button>
+                <button class="btn-top">Х</button>
+            </div>
+            <div id="container">
+                <div id="background">
+                    <div id="hairback"></div>
+                    <div id="person"></div>
+                    <div id="shoes"></div>
+                    <div id="clothes"></div>
+                    <div id="hairfront"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter">
+            <div class="chapter-top">
+                <div class="chapter-top-title">
+                    <h4>
+                        Опции
+                    </h4>
+                </div>
+                <button class="btn-top" style="background-color: rgba(255, 242, 242, 0.5)">-</button>
+                <button class="btn-top">Х</button>
+            </div>
+            {% for name, variants in options %}
+                <p>{{ name }}</p>
+                <div style="display: flex">
+                    {% for n, variant in variants %}
+                        <div class="option"
+                             style="background-image: url({{ asset('/img/dressup/' ~ variant) }});"
+                             onclick="dressup('{{ name }}', {{ n+1 }})">
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+<script src="{{ asset('/js/dress-up.js') }}"></script>
+</body>
+</html>

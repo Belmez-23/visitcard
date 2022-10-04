@@ -59,4 +59,21 @@ class BaseController extends AbstractController
     {
         return new Response($this->twig->render('balls.html.twig'));
     }
+
+    public function dressUpGame(): Response
+    {
+        return new Response($this->twig->render('dress-up.html.twig', [
+            'options' => [
+                'hair' => [
+                    'hairfront1.png', 'hairfront2.png', 'hairfront3.png'
+                ],
+                'dress' => [
+                    'dress1.png', 'dress2.png', 'dress3.png'
+                ],
+                'shoe' => [
+                    'shoe1.png', 'shoe2.png', 'shoe3.png'
+                ],
+            ]
+        ]));
+    }
 }

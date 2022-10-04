@@ -9,3 +9,7 @@ text:
 balls:
     path: /balls
     controller: App\Controller\BaseController::balls
+
+dress-up:
+    path: /dress-up
+    controller: App\Controller\BaseController::dressUpGame

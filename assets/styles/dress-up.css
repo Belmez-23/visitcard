@@ -1,0 +1,53 @@
+#container {
+    margin: auto;
+    width: 755px;
+    height: 987px;
+}
+
+#background {
+    position: absolute;
+    width: 555px;
+    height: 987px;
+
+    background-image: url("/public/img/dressup/resized_background.png");
+}
+
+#hairback {
+    position: absolute;
+    width: 555px;
+    height: 987px;
+}
+
+#hairfront {
+    position: absolute;
+    width: 555px;
+    height: 987px;
+}
+
+#person {
+    position: absolute;
+    width: 555px;
+    height: 987px;
+
+    background-image: url("/public/img/dressup/body.png");
+}
+
+#clothes {
+    position: absolute;
+    width: 555px;
+    height: 987px;
+}
+
+#shoes {
+    position: absolute;
+    width: 555px;
+    height: 987px;
+}
+
+.option {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: center center;
+}
