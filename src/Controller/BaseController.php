@@ -24,24 +24,6 @@ class BaseController extends AbstractController
         $this->service = $service;
     }
 
-    /**
-     * @Route("/favicon.ico", name="favicon")
-     */
-    public function favicon()
-    {
-        return new Response(<<<EOF
-<html>
-    <body>
-        <img src="https://www.computerhope.com/jargon/h/img.gif" />
-    </body>
-</html>
-EOF
-        );
-    }
-
-    /**
-     * @Route("/", name="homepage")
-     */
     public function index(Request $request): Response
     {
         $feedbackForm = $this->createFormBuilder()
@@ -62,6 +44,14 @@ EOF
         return new Response($this->twig->render('base.html.twig', [
             'chapters' => $this->service->getResume(),
             'feedback' => $feedbackForm->createView(),
+        ]));
+    }
+
+    public function textGenerator(Request $request): Response
+    {
+        return new Response($this->twig->render('text.html.twig', [
+            'customname' => $request->get('customname'),
+            'ukus' => $request->get('ukus'),
         ]));
     }
 }
