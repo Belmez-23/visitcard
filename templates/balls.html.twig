@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bouncing balls</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+
+<body>
+<h2>Шарики</h2>
+<h4>Используйте WASD, чтобы управлять лункой</h4>
+<p id='counter'></p>
+<canvas></canvas>
+
+<script src="{{ asset('/js/balls.js') }}"></script>
+</body>
+</html>

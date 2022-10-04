@@ -54,4 +54,9 @@ class BaseController extends AbstractController
             'ukus' => $request->get('ukus'),
         ]));
     }
+
+    public function balls(): Response
+    {
+        return new Response($this->twig->render('balls.html.twig'));
+    }
 }

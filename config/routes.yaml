@@ -5,3 +5,7 @@ index:
 text:
     path: /txt
     controller: App\Controller\BaseController::textGenerator
+
+balls:
+    path: /balls
+    controller: App\Controller\BaseController::balls
