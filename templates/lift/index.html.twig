@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+{# https://symfonycasts.com/screencast/javascript/ #}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Поднимаем штуки{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+{% block body %}
+    <div class="row">
+        <div class="col-md-7">
+            <h2>
+                История поднятий
+                <a href="#list-stuff-form" class="btn btn-md btn-success pull-right">
+                    <span class="fa fa-plus"></span> Add
+                </a>
+            </h2>
+            <table class="table table-striped js-rep-log-table">
+                <thead>
+                <tr>
+                    <th>Что?</th>
+                    <th>Сколько раз?</th>
+                    <th>Вес</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for repLog in repLogs %}
+                    <tr>
+                        <td>{{ repLog.itemLabel|trans }}</td>
+                        <td>{{ repLog.reps }}</td>
+                        <td>{{ repLog.totalWeightLifted }}</td>
+                        <td>
+                            <a href="#" class="js-delete-rep-log">
+                                <button class="btn-top">Х</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Поднимайся!</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>&nbsp;</td>
+                    <th>Итого</th>
+                    <th>{{ totalWeight }}</th>
+                    <td>&nbsp;</td>
+                </tr>
+                </tfoot>
+            </table>
+            {{ include('lift/_form.html.twig') }}
+        </div>
+        <div class="col-md-5">
+            <div class="leaderboard">
+                <h2 class="text-center"><img class="dumbbell" src="{{ asset('/img/lift/dumbbell.png') }}">
+                    Доска почёта
+                </h2>
+                {{ include('lift/_leaderboard.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-rep-log-table');
+            $table.find('.js-delete-rep-log').on('click', function (e) {
+                e.preventDefault();
+                $(e.target).addClass('text-danger');
+            });
+            $table.find('tbody tr').on('click', function () {
+                console.log('row clicked!');
+            });
+        });
+    </script>
+{% endblock %}
+</body>

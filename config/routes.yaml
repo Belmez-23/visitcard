@@ -13,3 +13,7 @@ balls:
 dress-up:
     path: /dress-up
     controller: App\Controller\BaseController::dressUpGame
+
+lift:
+    path: /lift
+    controller: App\Controller\BaseController::liftStuff

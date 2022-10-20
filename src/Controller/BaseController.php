@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
 class BaseController extends AbstractController
@@ -74,6 +73,14 @@ class BaseController extends AbstractController
                     'shoe1.png', 'shoe2.png', 'shoe3.png'
                 ],
             ]
+        ]));
+    }
+
+    public function liftStuff()
+    {
+        return new Response($this->twig->render('lift/index.html.twig', [
+            'repLogs' => [['itemLabel' => 'ыыыыыы', 'reps' => 2, 'totalWeightLifted' => 3],],
+            'totalWeight' => 3,
         ]));
     }
 }
