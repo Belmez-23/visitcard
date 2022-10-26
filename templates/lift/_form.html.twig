@@ -1,0 +1,21 @@
+{{ form_start(form, {
+    'attr': {
+        'class': 'form-inline js-new-rep-log-form',
+        'novalidate': 'novalidate'
+    }
+}) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.item, {
+        'label': 'Что было поднято?',
+        'label_attr': {'class': 'sr-only'}
+    }) }}
+
+    {{ form_row(form.reps, {
+        'label': 'Сколько раз?',
+        'label_attr': {'class': 'sr-only'},
+        'attr': {'placeholder': 'Сколько раз?'}
+    }) }}
+
+<button type="submit" class="btn btn-primary feedback-btn" id="form_send">Осилено!</button>
+{{ form_end(form) }}

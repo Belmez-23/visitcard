@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\BaseService;
+use App\Service\CsvConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -78,9 +79,50 @@ class BaseController extends AbstractController
 
     public function liftStuff()
     {
+        $converter = new CsvConverter();
+        $data = $converter->get(__DIR__ . '/../Pseudoentity/lift.csv');
+        $totalWeight = 0;
+        array_walk($data, function ($item) use (&$totalWeight) {
+            $totalWeight += $item['reps'] * $item['totalWeightLifted'];
+        });
+
+        $form = $this->createFormBuilder()
+            ->add('item', TextType::class, ['required' => true])
+            ->add('reps', TextType::class, ['required' => true])
+            ->getForm();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $row = [
+                'id' => random_int(0, 99999999),
+                'reps' => $data['reps'],
+                'itemLabel' => $data['itemLabel'],
+                'totalWeightLifted' => 1,
+            ];
+            $converter->add(__DIR__ . '/../Pseudoentity/lift.csv', $row);
+        }
+
         return new Response($this->twig->render('lift/index.html.twig', [
-            'repLogs' => [['itemLabel' => 'ыыыыыы', 'reps' => 2, 'totalWeightLifted' => 3],],
-            'totalWeight' => 3,
+            'form' => $form->createView(),
+            'repLogs' => $data,
+            'totalWeight' => $totalWeight,
         ]));
+    }
+
+    public function deleteRep($id)
+    {
+        $file = __DIR__ . '/../Pseudoentity/lift.csv';
+        $converter = new CsvConverter();
+        $data = $converter->get($file);
+        foreach ($data as $key => $row) {
+            if ($row['id'] == $id) {
+                unset($data[$key]);
+                $converter->set($file, $data);
+
+                return new Response(null, 204);
+            }
+        }
+
+        return new Response(null, 404);
     }
 }
