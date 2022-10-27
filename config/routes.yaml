@@ -16,9 +16,9 @@ dress-up:
 
 lift:
     path: /lift
-    controller: App\Controller\BaseController::liftStuff
+    controller: App\Controller\LiftController::index
 
 rep_log_delete:
     path: /lift/{id}
-    controller: \App\Controller\BaseController::deleteRep
+    controller: \App\Controller\LiftController::deleteRep
     methods: [DELETE]
